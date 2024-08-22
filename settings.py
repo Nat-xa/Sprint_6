@@ -6,6 +6,8 @@ class OrderSettings:
         ['Павел', 'Сидоров', 'Москва, пр-кт Вернадского, 1', '3', '+7800900909',  '28', 'позвонить за час']
     ]
 
+    ORDER_HEADER_TEXT = 'Для кого самокат'
+
 
 class ModalWindowSettings:
 

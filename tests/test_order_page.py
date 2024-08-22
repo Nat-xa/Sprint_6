@@ -2,9 +2,6 @@ import allure
 import pytest
 
 from data import Urls
-from locators.main_page_locators import MainPageLocators
-from locators.order_page_locators import OrderPageLocators
-from pages.base_page import BasePage
 from pages.main_page import MainPage
 from pages.modal_window_page import ModalWindowPage
 from pages.order_page import OrderPage
@@ -31,12 +28,10 @@ class TestOrderPage:
     def test_order_button_page(self, driver):
         main_page = MainPage(driver)
         main_page.open_page(Urls.QA_SCOOTER)
-        main_page.scroll_to_element(MainPageLocators.ORDER_BUTTON_PAGE)
-        main_page.click_order_button_page()
+        main_page.scroll_and_click_order_button_page()
         order_page = OrderPage(driver)
-        element = order_page.wait_and_find_element(OrderPageLocators.NAME_FIELD)
 
-        assert element.is_displayed
+        assert order_page.get_text_order_header() == OrderSettings.ORDER_HEADER_TEXT
 
     @allure.title('Проверка перехода на главную страницу при нажатии на логоти "Самокат"')
     def test_logo_scooter_transition(self, driver):
@@ -45,9 +40,8 @@ class TestOrderPage:
         main_page.click_order_button_header()
         order_page = OrderPage(driver)
         order_page.click_to_logo_scooter()
-        base_page = BasePage(driver)
 
-        assert (base_page.wait_for_correct_current_url(Urls.QA_SCOOTER)
+        assert (order_page.wait_for_correct_current_url(Urls.QA_SCOOTER)
                 == Urls.QA_SCOOTER), 'Ожидаемый URL не соответствует полученному'
 
     @allure.title('Проверка редиректа на страницу Дзена при нажатии на логотип "Яндекс"')
@@ -57,7 +51,6 @@ class TestOrderPage:
         main_page.click_order_button_header()
         order_page = OrderPage(driver)
         order_page.click_to_logo_yandex()
-        base_page = BasePage(driver)
-        actual_url = base_page.wait_redirect_dzen_and_get_current_url()
 
-        assert actual_url == Urls.DZEN, 'Ожидаемый URL не соответствует полученному'
+        assert order_page.wait_redirect_dzen_and_get_current_url() == Urls.DZEN, \
+            'Ожидаемый URL не соответствует полученному'

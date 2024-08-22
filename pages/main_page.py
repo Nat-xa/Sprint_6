@@ -6,8 +6,8 @@ from pages.base_page import BasePage
 
 
 class MainPage(BasePage):
-    @allure.step('Нажатие на кнопку "Заказать" в нижней части страницы')
-    def click_order_button_page(self):
+    @allure.step('Скролл и нажатие на кнопку "Заказать" в нижней части страницы')
+    def scroll_and_click_order_button_page(self):
         self.scroll_to_element(MainPageLocators.ORDER_BUTTON_PAGE)
         order_button_page = self.wait_and_find_element(MainPageLocators.ORDER_BUTTON_PAGE)
         order_button_page.click()
@@ -26,3 +26,8 @@ class MainPage(BasePage):
     def get_question_answer(self, number):
         question_answer = self.wait_and_find_element(MainPageLocators.answer_by_id(number))
         return question_answer.text
+
+    @allure.step('Скролл и ожидание блока "Вопросы о важном"')
+    def scroll_and_find_question_block(self):
+        self.scroll_to_element(MainPageLocators.QUESTION_BLOCK)
+        return self.wait_and_find_element(MainPageLocators.QUESTION_BLOCK)

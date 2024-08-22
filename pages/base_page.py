@@ -2,6 +2,7 @@ import allure
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 
+from data import Urls
 from locators.base_page_locators import BasePageLocators
 
 
@@ -38,7 +39,7 @@ class BasePage:
     def wait_redirect_dzen_and_get_current_url(self):
         WebDriverWait(self.driver, 20).until(expected_conditions.number_of_windows_to_be(2))
         self.driver.switch_to.window(self.driver.window_handles[1])
-        WebDriverWait(self.driver, 10).until(expected_conditions.url_contains('https://dzen.ru/'))
+        WebDriverWait(self.driver, 10).until(expected_conditions.url_contains(Urls.DZEN_MAIN))
         return self.driver.current_url
 
     @allure.step('Нажатие на логотип "Самокат"')

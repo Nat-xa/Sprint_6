@@ -30,9 +30,11 @@ class OrderPageLocators:
     RENTAL_PERIOD = [By.XPATH, ".//div[@class = 'Dropdown-placeholder']"]
     # Выпадающий список поля "Срок аренды" (выбор варианта "двое суток")
     RENTAL_PERIOD_DROPDOWN = [By.XPATH, ".//div[text() = 'двое суток']"]
-    # Поле "Цвет самоката" в форме заказа самоката (выбор варианта "Черный жемчуг")
-    SCOOTER_COLOR = [By.XPATH, ".//input[@id = 'black']"]
+    # Поле "Цвет самоката" в форме заказа самоката (выбор значения "серая безысходность").
+    COLOR = [By.XPATH, ".//input[@id = 'grey']"]
     # Поле "Комментарий для курьера" в форме заказа самоката
     COMMENT = [By.XPATH, ".// input[@placeholder = 'Комментарий для курьера']"]
     # Кнопка "Заказать" в форме заказа самоката
     ORDER_BUTTON_FORM_ORDER = [By.XPATH, ".//div[@class = 'Order_Content__bmtHS']//button[text() = 'Заказать']"]
+    # Заголовок формы заказа
+    ORDER_HEADER = [By.XPATH, ".//div[@class = 'Order_Header__BZXOb']"]

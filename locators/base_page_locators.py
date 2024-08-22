@@ -8,5 +8,3 @@ class BasePageLocators:
     LOGO_SCOOTER = [By.XPATH, ".//a[@class = 'Header_LogoScooter__3lsAR']"]
     # Логотип "Яндекс"
     LOGO_YANDEX = [By.XPATH, ".//a[@class = 'Header_LogoYandex__3TSOI']"]
-    # Текст на главной странице
-    #TEXT_MAIN_PAGE = [By.XPATH, ".//div[@class = 'Home_Header__iJKdX']"]

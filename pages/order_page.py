@@ -54,7 +54,7 @@ class OrderPage(BasePage):
 
     @allure.step('Заполнение поля выбора цвета самоката')
     def set_scooter_color(self):
-        scooter_color_input = self.wait_and_find_element(OrderPageLocators.SCOOTER_COLOR)
+        scooter_color_input = self.wait_and_find_element(OrderPageLocators.COLOR)
         scooter_color_input.click()
 
     @allure.step('Заполнение поля "Комментарий для курьера"')
@@ -66,6 +66,11 @@ class OrderPage(BasePage):
     def click_order_button_form_order(self):
         order_button = self.wait_and_find_element(OrderPageLocators.ORDER_BUTTON_FORM_ORDER)
         order_button.click()
+
+    @allure.step('Ожидание заголовка формы заказа и получение его текста')
+    def get_text_order_header(self):
+        text_order_header = self.wait_and_find_element(OrderPageLocators.ORDER_HEADER)
+        return text_order_header.text
 
     @allure.step('Заполнение формы заказа самоката')
     def form_order_fill(self, name, family, address, station_number, telephone, delivery_day, comment):
